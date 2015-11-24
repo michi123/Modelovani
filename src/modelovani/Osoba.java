@@ -27,7 +27,6 @@ public class Osoba {
         this.promile = randomInteger(0, 10);
         this.bezohlednost = randomInteger(1, 10);
         this.spechat = randomInteger(1, 10);
-        this.rocniObdobi = getRocniObdobiRandom();
         this.typ = getType();
     }
 
@@ -71,14 +70,6 @@ public class Osoba {
         this.spechat = spechat;
     }
 
-    public String getRocniObdobi() {
-        return rocniObdobi;
-    }
-
-    public void setRocniObdobi(String rocniObdobi) {
-        this.rocniObdobi = rocniObdobi;
-    }
-
     public String getTyp() {
         return typ;
     }
@@ -100,20 +91,7 @@ public class Osoba {
        }
    }
    
-   private String getRocniObdobiRandom(){
-       switch(randomInteger(1, 4)){
-           case 1: 
-               return "jaro";
-           case 2: 
-               return "leto";               
-           case 3: 
-               return "podzim";
-            case 4: 
-               return "zima";
-            default: 
-            return "jaro";
-       }
-   }
+ 
    
    
    public int randomInteger(int min, int max) {
@@ -128,7 +106,7 @@ public class Osoba {
 
     @Override
     public String toString() {
-        return "Osoba{" + "poziceX=" + poziceX + ", poziceY=" + poziceY + ", promile=" + promile + ", bezohlednost=" + bezohlednost + ", spechat=" + spechat + ", rocniObdobi=" + rocniObdobi + ", typ=" + typ + '}';
+        return "Osoba{" + "poziceX=" + poziceX + ", poziceY=" + poziceY + ", promile=" + promile + ", bezohlednost=" + bezohlednost + ", spechat=" + spechat +  ", typ=" + typ + '}';
     }
    
    
