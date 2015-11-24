@@ -11,12 +11,12 @@ public class Logic {
     int numberOfDay = 1;
     Year year; 
     int days[] = new int[365];
-    
+    double quantityPeople;
     int magicNumber = 24 + Utils.randInt(0, 5);
      
-    public Logic() {
+    public Logic(double quantityPeople) {
         year = new Year();
-        
+        this.quantityPeople = quantityPeople;
         for(int i = numberOfDay; i <= 365; i++){
            step();
            numberOfDay++;
@@ -58,7 +58,7 @@ public class Logic {
     }
     
     public void step(){    
-        Osoba actors[] = new Osoba[year.getNumberOfActorFromNumberOfDay(numberOfDay)];
+        Osoba actors[] = new Osoba[(int)(year.getNumberOfActorFromNumberOfDay(numberOfDay)*quantityPeople)];
         for(int i = 0; i<actors.length; i++){
             actors[i] = new Osoba();
         }
@@ -80,7 +80,7 @@ public class Logic {
             t++;
         }
         
-        System.out.println(numberOfDay + " " + n + "/" + c + "/" + t);
+        System.out.println(numberOfDay + " " + n + "/" + c + "/" + t+"    "+actors.length);
     }
     
 }

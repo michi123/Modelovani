@@ -24,6 +24,10 @@ public class Year {
         return Arrays.asList(holiday).contains(numberOfDay);
     }
     
+    public int getSeason(int numberOfDay){
+        return numberOfDay / 4;
+    }
+    
     // pocet aktorů dle dne
     public int getNumberOfActorFromNumberOfDay(int dayNumber){
         boolean holiday = isHoliday(dayNumber);

@@ -5,6 +5,9 @@
  */
 package modelovani;
 
+import java.applet.Applet;
+import view.Panel;
+
 /**
  *
  * @author Michal
@@ -15,7 +18,8 @@ public class Modelovani {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Logic l = new Logic();
+        Panel gui = new Panel();
+        gui.setVisible(true);
     }
     
 }
