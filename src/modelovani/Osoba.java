@@ -5,6 +5,8 @@
  */
 package modelovani;
 
+import java.util.Random;
+
 /**
  *
  * @author Michal
@@ -16,18 +18,17 @@ public class Osoba {
    int promile;
    int bezohlednost;
    int spechat;
-   int rocniObdobi;
+   String rocniObdobi;
    String typ;
 
     public Osoba() {
-        this.poziceX = poziceX;
-        this.poziceY = poziceY;
-        this.promile = promile;
-        this.bezohlednost = bezohlednost;
-        this.spechat = spechat;
-        this.rocniObdobi = rocniObdobi;
+        this.poziceX = randomInteger(1, 10);
+        this.poziceY = randomInteger(1, 10);
+        this.promile = randomInteger(0, 10);
+        this.bezohlednost = randomInteger(1, 10);
+        this.spechat = randomInteger(1, 10);
+        this.rocniObdobi = getRocniObdobiRandom();
         this.typ = getType();
-        System.out.println(typ);
     }
 
     public int getPoziceX() {
@@ -70,11 +71,11 @@ public class Osoba {
         this.spechat = spechat;
     }
 
-    public int getRocniObdobi() {
+    public String getRocniObdobi() {
         return rocniObdobi;
     }
 
-    public void setRocniObdobi(int rocniObdobi) {
+    public void setRocniObdobi(String rocniObdobi) {
         this.rocniObdobi = rocniObdobi;
     }
 
@@ -87,11 +88,7 @@ public class Osoba {
     }
    
    private String getType(){
-       int cislo;
-       cislo = (int) (Math.random()*((4 - 2))*100)/100;
-       System.out.println((Math.random()*((4 - 2))*100)/100);
-       System.out.println(cislo);
-       switch(cislo){
+       switch(randomInteger(0, 3)){
            case 1: 
                return "chodec";
            case 2: 
@@ -102,5 +99,39 @@ public class Osoba {
             return "chodec";
        }
    }
+   
+   private String getRocniObdobiRandom(){
+       switch(randomInteger(1, 4)){
+           case 1: 
+               return "jaro";
+           case 2: 
+               return "leto";               
+           case 3: 
+               return "podzim";
+            case 4: 
+               return "zima";
+            default: 
+            return "jaro";
+       }
+   }
+   
+   
+   public int randomInteger(int min, int max) {
+
+    Random rand = new Random();
+
+    // nextInt excludes the top value so we have to add 1 to include the top value
+    int randomNum = rand.nextInt((max - min) + 1) + min;
+
+    return randomNum;
+}
+
+    @Override
+    public String toString() {
+        return "Osoba{" + "poziceX=" + poziceX + ", poziceY=" + poziceY + ", promile=" + promile + ", bezohlednost=" + bezohlednost + ", spechat=" + spechat + ", rocniObdobi=" + rocniObdobi + ", typ=" + typ + '}';
+    }
+   
+   
+   
     
 }
