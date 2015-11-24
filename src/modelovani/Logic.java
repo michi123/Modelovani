@@ -13,6 +13,7 @@ public class Logic {
 
     public Logic() {
         Osoba a = new Osoba();
+        System.out.println(a.toString());
     }
     
 }
