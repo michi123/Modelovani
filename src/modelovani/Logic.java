@@ -89,8 +89,8 @@ public class Logic {
             t++;
         }
         
-        days[t].accidents = n;
-        days[t].actors = actors.length;
+        days[numberOfDay-1].accidents = n;
+        days[numberOfDay-1].actors = actors.length;
         
         System.out.println(days[t]);
     }

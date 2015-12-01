@@ -12,41 +12,44 @@ package export;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.concurrent.TimeUnit;
+import modelovani.Day;
 
 public class Csv
 {
-
-    public Csv() {
-        generateCsvFile("test.csv"); 
+    Day days[];
+    
+    
+    public Csv(Day days[]) {
+        this.days=days;
+        generateCsvFile("test.csv");
     }
  
     
 	   
 
    
-   private static void generateCsvFile(String sFileName)
+   private void generateCsvFile(String sFileName)
    {
-	try
+       try
 	{
-	    FileWriter writer = new FileWriter(sFileName);
-		 
-	    writer.append("DisplayName");
-	    writer.append(';');
-	    writer.append("Age");
-	    writer.append('\n');
-
-	    writer.append("MKYONG");
-	    writer.append(';');
-	    writer.append("26");
+            FileWriter writer = new FileWriter(sFileName);
+            
+            writer.append("Pocet aktoru");
+            writer.append(';');
+            writer.append("Pocet nehod");
             writer.append('\n');
-			
-	    writer.append("YOUR NAME");
-	    writer.append(';');
-	    writer.append("29");
-	    writer.append('\n');
-			
-	    //generate whatever data you want
-			
+                System.out.println("ahoj");
+                
+            for (int i = 0; i < this.days.length; i++) {
+                writer.append(Integer.toString(this.days[i].actors));
+                System.out.println(Integer.toString(this.days[i].actors));
+                writer.append(';');
+                writer.append(Integer.toString(this.days[i].accidents));
+                System.out.println(Integer.toString(this.days[i].accidents));
+                writer.append('\n');
+            }
+            
 	    writer.flush();
 	    writer.close();
 	}
