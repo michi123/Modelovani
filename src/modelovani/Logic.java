@@ -17,13 +17,13 @@ public class Logic {
     
      
     public Logic(double quantityPeople) {
-        for(int i = 0; i < days.length; i++){
-            days[i] = new Day();
-        }
-       
         year = new Year();
         this.quantityPeople = quantityPeople;
         
+        for(int i = 0; i < days.length; i++){
+            days[i] = new Day();
+        }
+      
         for(int i = numberOfDay; i <= 365; i++){
            step();
            numberOfDay++;
