@@ -17,6 +17,8 @@ public class Panel extends javax.swing.JFrame {
      */
     public Panel() {
         initComponents();
+        minSlider.setValue(20);
+        maxSlider.setValue(50);
     }
 
     /**

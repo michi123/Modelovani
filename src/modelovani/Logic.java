@@ -9,8 +9,8 @@ import javax.rmi.CORBA.Util;
 public class Logic {
 
     Day days[] = new Day[365];
-    public static int min;
-    public static int max;
+    public static int min = 20;
+    public static int max = 50;
     int numberOfDay = 1;
     Year year; 
     double quantityPeople;
