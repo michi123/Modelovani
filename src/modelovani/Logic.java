@@ -9,7 +9,8 @@ import javax.rmi.CORBA.Util;
 public class Logic {
 
     Day days[] = new Day[365];
-    
+    public static int min;
+    public static int max;
     int numberOfDay = 1;
     Year year; 
     double quantityPeople;
@@ -66,7 +67,7 @@ public class Logic {
     public void step(){   
         int c = 0, t = 0, n = 0;
         
-        Osoba actors[] = new Osoba[(int)(year.getNumberOfActorFromNumberOfDay(numberOfDay)*quantityPeople)];
+        Osoba actors[] = new Osoba[(int)(year.getNumberOfActorFromNumberOfDay(numberOfDay,min, max)*quantityPeople)];
         for(int i = 0; i<actors.length; i++){
             actors[i] = new Osoba();
         }
