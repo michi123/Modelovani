@@ -12,7 +12,6 @@ import modelovani.Logic;
  * @author Ja
  */
 public class Panel extends javax.swing.JFrame {
-
     /**
      * Creates new form Panel
      */
@@ -33,6 +32,13 @@ public class Panel extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         startButton = new javax.swing.JButton();
         labelPocetLidi = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        maxSlider = new javax.swing.JSlider();
+        jLabel4 = new javax.swing.JLabel();
+        minSlider = new javax.swing.JSlider();
+        min = new javax.swing.JLabel();
+        max = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,6 +67,38 @@ public class Panel extends javax.swing.JFrame {
 
         labelPocetLidi.setText("1.0 X");
 
+        jLabel2.setText("Násobek:");
+
+        jLabel3.setText("Max:");
+
+        maxSlider.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                maxSliderMouseDragged(evt);
+            }
+        });
+        maxSlider.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                maxSliderMouseReleased(evt);
+            }
+        });
+
+        jLabel4.setText("Min");
+
+        minSlider.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseDragged(java.awt.event.MouseEvent evt) {
+                minSliderMouseDragged(evt);
+            }
+        });
+        minSlider.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseReleased(java.awt.event.MouseEvent evt) {
+                minSliderMouseReleased(evt);
+            }
+        });
+
+        min.setText("jLabel5");
+
+        max.setText("jLabel6");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -69,27 +107,68 @@ public class Panel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(startButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(pocet_lidi, javax.swing.GroupLayout.DEFAULT_SIZE, 337, Short.MAX_VALUE)
+                        .addGap(10, 10, 10)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel4))
                         .addGap(18, 18, 18)
-                        .addComponent(labelPocetLidi)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(pocet_lidi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(labelPocetLidi))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(minSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                                .addComponent(jLabel3)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(maxSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(17, 17, 17)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(206, 206, 206)
+                .addComponent(min)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(max)
+                .addGap(151, 151, 151))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(pocet_lidi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(labelPocetLidi))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 195, Short.MAX_VALUE)
-                .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(7, 7, 7)
+                                .addComponent(jLabel2)
+                                .addGap(40, 40, 40))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(labelPocetLidi)
+                                .addGap(29, 29, 29)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel3)
+                            .addComponent(maxSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
+                            .addComponent(minSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(min)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(max)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(pocet_lidi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(260, 260, 260))))
         );
 
         pack();
@@ -108,6 +187,22 @@ public class Panel extends javax.swing.JFrame {
        Double number = new Double(pocet_lidi.getValue()/10.0);
         labelPocetLidi.setText(number.toString()+" X");
     }//GEN-LAST:event_pocet_lidiMouseReleased
+
+    private void minSliderMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minSliderMouseDragged
+        Logic.min=minSlider.getValue();
+    }//GEN-LAST:event_minSliderMouseDragged
+
+    private void minSliderMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minSliderMouseReleased
+         Logic.min=minSlider.getValue();
+    }//GEN-LAST:event_minSliderMouseReleased
+
+    private void maxSliderMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maxSliderMouseDragged
+         Logic.max=minSlider.getValue();
+    }//GEN-LAST:event_maxSliderMouseDragged
+
+    private void maxSliderMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maxSliderMouseReleased
+         Logic.max=minSlider.getValue();
+    }//GEN-LAST:event_maxSliderMouseReleased
 
     /**
      * @param args the command line arguments
@@ -146,7 +241,14 @@ public class Panel extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel labelPocetLidi;
+    private javax.swing.JLabel max;
+    private javax.swing.JSlider maxSlider;
+    private javax.swing.JLabel min;
+    private javax.swing.JSlider minSlider;
     private javax.swing.JSlider pocet_lidi;
     private javax.swing.JButton startButton;
     // End of variables declaration//GEN-END:variables
