@@ -95,9 +95,9 @@ public class Panel extends javax.swing.JFrame {
             }
         });
 
-        min.setText("jLabel5");
+        min.setText("20");
 
-        max.setText("jLabel6");
+        max.setText("50");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -175,7 +175,12 @@ public class Panel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
-       Logic logic = new Logic(pocet_lidi.getValue()/10.0);
+       if(maxSlider.getValue()>minSlider.getValue()){
+           Logic logic = new Logic(pocet_lidi.getValue()/10.0);
+       }else{
+           Error err= new Error("Max je menší než min");
+           err.setVisible(true);
+       }
     }//GEN-LAST:event_startButtonActionPerformed
 
     private void pocet_lidiMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pocet_lidiMouseDragged
@@ -190,18 +195,22 @@ public class Panel extends javax.swing.JFrame {
 
     private void minSliderMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minSliderMouseDragged
         Logic.min=minSlider.getValue();
+        min.setText(Integer.toString(minSlider.getValue()));
     }//GEN-LAST:event_minSliderMouseDragged
 
     private void minSliderMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minSliderMouseReleased
          Logic.min=minSlider.getValue();
+         min.setText(Integer.toString(minSlider.getValue()));
     }//GEN-LAST:event_minSliderMouseReleased
 
     private void maxSliderMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maxSliderMouseDragged
          Logic.max=minSlider.getValue();
+         max.setText(Integer.toString(maxSlider.getValue()));
     }//GEN-LAST:event_maxSliderMouseDragged
 
     private void maxSliderMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maxSliderMouseReleased
          Logic.max=minSlider.getValue();
+         max.setText(Integer.toString(maxSlider.getValue()));
     }//GEN-LAST:event_maxSliderMouseReleased
 
     /**

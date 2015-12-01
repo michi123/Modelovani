@@ -171,12 +171,12 @@
     </Component>
     <Component class="javax.swing.JLabel" name="min">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel5"/>
+        <Property name="text" type="java.lang.String" value="20"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="max">
       <Properties>
-        <Property name="text" type="java.lang.String" value="jLabel6"/>
+        <Property name="text" type="java.lang.String" value="50"/>
       </Properties>
     </Component>
   </SubComponents>
