@@ -8,15 +8,23 @@ import javax.rmi.CORBA.Util;
  */
 public class Logic {
 
+    Day days[] = new Day[365];
+    
     int numberOfDay = 1;
     Year year; 
-    int days[] = new int[365];
     double quantityPeople;
     int magicNumber = 24 + Utils.randInt(0, 5);
+    
      
     public Logic(double quantityPeople) {
+        
+        for(int i = 0; i < days.length; i++){
+            days[i] = new Day();
+        }
+        
         year = new Year();
         this.quantityPeople = quantityPeople;
+        
         for(int i = numberOfDay; i <= 365; i++){
            step();
            numberOfDay++;
@@ -48,24 +56,20 @@ public class Logic {
         sum += (a.promile *3 + a.spechat + a.bezohlednost)/3;
         sum += (b.promile *3 + b.spechat + b.bezohlednost)/3;
         
-        if(days[numberOfDay-1] > 2){
+        if(days[numberOfDay-1].deaths > Utils.randInt(0, 3)){
             sum -= Utils.randInt(0, 5);
         }
-        
-        //System.out.println(sum);
-        
+       
         return sum > magicNumber;
     }
     
-    public void step(){    
+    public void step(){   
+        int c = 0, t = 0, n = 0;
+        
         Osoba actors[] = new Osoba[(int)(year.getNumberOfActorFromNumberOfDay(numberOfDay)*quantityPeople)];
         for(int i = 0; i<actors.length; i++){
             actors[i] = new Osoba();
         }
-        
-        int c = 0;
-        int t = 0;
-        int n = 0;
         
         for(Osoba o: actors){
             for(Osoba a: actors){
@@ -76,11 +80,10 @@ public class Logic {
                     };
                 }
             }
-            days[t] = n;
             t++;
         }
         
-        System.out.println(numberOfDay + " " + n + "/" + c + "/" + t+"    "+actors.length);
+        days[t].deaths = n;
     }
     
 }
