@@ -17,22 +17,20 @@ public class Logic {
     
      
     public Logic(double quantityPeople) {
-        init();
-        
-        year = new Year();
-        this.quantityPeople = quantityPeople;
-    }
-   
-    private final void init(){
         for(int i = 0; i < days.length; i++){
             days[i] = new Day();
         }
+       
+        year = new Year();
+        this.quantityPeople = quantityPeople;
+        
         for(int i = numberOfDay; i <= 365; i++){
            step();
            numberOfDay++;
         } 
     }
-   
+ 
+  
     private boolean crash(Osoba a, Osoba b){
         int sum      = 0;
       
@@ -55,8 +53,11 @@ public class Logic {
             sum += Utils.randInt(0, 5);
         }
         
-        sum += (a.promile *3 + a.spechat + a.bezohlednost)/3;
-        sum += (b.promile *3 + b.spechat + b.bezohlednost)/3;
+        int x = Utils.randInt(1, 5);
+        int y = Utils.randInt(1, 5);
+        
+        sum += (a.promile *x + a.spechat + a.bezohlednost)/x;
+        sum += (b.promile *y + b.spechat + b.bezohlednost)/y;
         
         if(days[numberOfDay-1].accidents > Utils.randInt(0, 3)){
             sum -= Utils.randInt(0, 5);
@@ -87,6 +88,8 @@ public class Logic {
         
         days[t].accidents = n;
         days[t].actors = actors.length;
+        
+        System.out.println(days[t]);
     }
     
 }
