@@ -1,5 +1,6 @@
 package modelovani;
 
+import export.Csv;
 import javax.rmi.CORBA.Util;
 
 /**
@@ -29,6 +30,7 @@ public class Logic {
            step();
            numberOfDay++;
         } 
+        new Csv(days);
     }
  
   
