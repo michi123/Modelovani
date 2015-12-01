@@ -29,9 +29,9 @@ public class Year {
     }
     
     // pocet aktorů dle dne
-    public int getNumberOfActorFromNumberOfDay(int dayNumber){
+    public int getNumberOfActorFromNumberOfDay(int dayNumber, int min, int max){
         boolean holiday = isHoliday(dayNumber);
-        int result = Utils.randInt(20, 50);
+        int result = Utils.randInt(min, max);
       
         // pokud je svátek, bude počet aktorů menší. 
         if(holiday){
