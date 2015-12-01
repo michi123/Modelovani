@@ -33,21 +33,23 @@ public class Year {
         boolean holiday = isHoliday(dayNumber);
         int result = Utils.randInt(min, max);
       
-        // pokud je svátek, bude počet aktorů menší. 
-        if(holiday){
-            int r = Utils.randInt(1, 10);
-            
-            if(r < result)
-                result -= Utils.randInt(1, 10);
-        }
-        
-        // Pokud nejsou prázdniny a zároveň není víkend, bude počet aktorů vyšší. 
-        if(!holiday && !isWeekend(dayNumber)){
-            result += Utils.randInt(1, 15);
-        }
-        
-        if(isFriday(dayNumber)){
-            result += Utils.randInt(1, 5);
+        while(result > max){
+            // pokud je svátek, bude počet aktorů menší. 
+            if(holiday){
+                int r = Utils.randInt(1, 10);
+
+                if(r < result)
+                    result -= Utils.randInt(1, 10);
+            }
+
+            // Pokud nejsou prázdniny a zároveň není víkend, bude počet aktorů vyšší. 
+            if(!holiday && !isWeekend(dayNumber)){
+                result += Utils.randInt(1, 15);
+            }
+
+            if(isFriday(dayNumber)){
+                result += Utils.randInt(1, 5);
+            }
         }
         
         return result;
