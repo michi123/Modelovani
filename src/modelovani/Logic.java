@@ -84,6 +84,9 @@ public class Logic {
         }
         
         days[t].deaths = n;
+        days[t].actors = actors.length;
+        
+        System.out.println(n);
     }
     
 }
