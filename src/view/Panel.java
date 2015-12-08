@@ -378,7 +378,7 @@ public class Panel extends javax.swing.JFrame {
         
  
 
-        JFreeChart chart = ChartFactory.createBarChart("Poměr počtu lidí a nehod za daný měsíc", "Měsíc", "Počet", dataset, PlotOrientation.VERTICAL, true, true, true);
+        JFreeChart chart = ChartFactory.createBarChart("Poměr počtu lidí a nehod za daný měsíc", "Měsíc", "Počet lidí", dataset, PlotOrientation.VERTICAL, true, true, true);
          CategoryPlot p = chart.getCategoryPlot();
          p.setRangeGridlinePaint(Color.black);
         ChartPanel chartPanel = new ChartPanel(chart);
