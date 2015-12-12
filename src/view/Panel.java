@@ -30,6 +30,7 @@ public class Panel extends javax.swing.JFrame {
     }
     
     private int tcount = 0;
+    int experimentId=1;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -157,8 +158,9 @@ public class Panel extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
-       Logic logic = new Logic(pocet_lidi.getValue()/10.0, this);
+       Logic logic = new Logic(pocet_lidi.getValue()/10.0, this,experimentId);
        this.tcount += 1;
+       this.experimentId++;
     }//GEN-LAST:event_startButtonActionPerformed
 
     private void pocet_lidiMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pocet_lidiMouseDragged

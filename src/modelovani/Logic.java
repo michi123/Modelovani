@@ -19,7 +19,7 @@ public class Logic {
     Year year; 
     double quantityPeople;
      
-    public Logic(double quantityPeople, Panel panel) {
+    public Logic(double quantityPeople, Panel panel, int experimentId) {
         year = new Year();
         this.quantityPeople = quantityPeople;
         
@@ -33,7 +33,7 @@ public class Logic {
            
         } 
         panel.graph(days);
-        new Csv(days);
+        new Csv(days,experimentId);
     }
  
   
