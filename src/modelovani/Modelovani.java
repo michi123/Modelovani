@@ -6,6 +6,8 @@
 package modelovani;
 
 import java.applet.Applet;
+import javafx.scene.chart.BarChart;
+import view.Graph;
 import view.Panel;
 
 /**
@@ -20,6 +22,7 @@ public class Modelovani {
     public static void main(String[] args) {
         Panel gui = new Panel();
         gui.setVisible(true);
+        
     }
     
 }

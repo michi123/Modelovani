@@ -2,6 +2,7 @@ package modelovani;
 
 import export.Csv;
 import javax.rmi.CORBA.Util;
+import view.Panel;
 
 /**
  *
@@ -16,9 +17,8 @@ public class Logic {
     Year year; 
     double quantityPeople;
     int magicNumber = 24 + Utils.randInt(0, 5);
-    
      
-    public Logic(double quantityPeople) {
+    public Logic(double quantityPeople, Panel panel) {
         year = new Year();
         this.quantityPeople = quantityPeople;
         
@@ -29,7 +29,9 @@ public class Logic {
         for(int i = numberOfDay; i <= 365; i++){
            step();
            numberOfDay++;
+           
         } 
+        panel.graph(days);
         new Csv(days);
     }
  
@@ -92,7 +94,7 @@ public class Logic {
         days[numberOfDay-1].accidents = n;
         days[numberOfDay-1].actors = actors.length;
         
-        System.out.println(days[t]);
+      
     }
     
 }

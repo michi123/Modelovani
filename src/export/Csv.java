@@ -39,14 +39,11 @@ public class Csv
             writer.append(';');
             writer.append("Pocet nehod");
             writer.append('\n');
-                System.out.println("ahoj");
                 
             for (int i = 0; i < this.days.length; i++) {
                 writer.append(Integer.toString(this.days[i].actors));
-                System.out.println(Integer.toString(this.days[i].actors));
                 writer.append(';');
                 writer.append(Integer.toString(this.days[i].accidents));
-                System.out.println(Integer.toString(this.days[i].accidents));
                 writer.append('\n');
             }
             
