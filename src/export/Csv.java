@@ -33,7 +33,7 @@ public class Csv
    {
        try
 	{
-            FileWriter writer = new FileWriter("./csvExport/"+sFileName);
+            FileWriter writer = new FileWriter(sFileName);
             
             writer.append("Pocet aktoru");
             writer.append(';');
