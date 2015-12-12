@@ -7,6 +7,7 @@ package view;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
+import javax.swing.table.DefaultTableModel;
 import modelovani.Day;
 import modelovani.Logic;
 import org.jfree.chart.ChartFactory;
@@ -18,7 +19,7 @@ import org.jfree.data.category.DefaultCategoryDataset;
 
 /**
  *
- * @author Ja
+ * @author On
  */
 public class Panel extends javax.swing.JFrame {
     /**
@@ -26,10 +27,9 @@ public class Panel extends javax.swing.JFrame {
      */
     public Panel() {
         initComponents();
-        minSlider.setValue(20);
-        maxSlider.setValue(50);
-        
     }
+    
+    private int tcount = 0;
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -40,18 +40,28 @@ public class Panel extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
         pocet_lidi = new javax.swing.JSlider();
-        jLabel1 = new javax.swing.JLabel();
         startButton = new javax.swing.JButton();
-        labelPocetLidi = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        maxSlider = new javax.swing.JSlider();
-        jLabel4 = new javax.swing.JLabel();
-        minSlider = new javax.swing.JSlider();
-        min = new javax.swing.JLabel();
-        max = new javax.swing.JLabel();
         graphPanel = new javax.swing.JPanel();
+        numberOfAccidents = new javax.swing.JLabel();
+        numberOfAccidentsUDI = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        table = new javax.swing.JTable();
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -69,8 +79,6 @@ public class Panel extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setText("Počet lidí:");
-
         startButton.setText("Spustit");
         startButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -78,41 +86,30 @@ public class Panel extends javax.swing.JFrame {
             }
         });
 
-        labelPocetLidi.setText("1.0 X");
-
-        jLabel2.setText("Násobek:");
-
-        jLabel3.setText("Max:");
-
-        maxSlider.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                maxSliderMouseDragged(evt);
-            }
-        });
-        maxSlider.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                maxSliderMouseReleased(evt);
-            }
-        });
-
-        jLabel4.setText("Min");
-
-        minSlider.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                minSliderMouseDragged(evt);
-            }
-        });
-        minSlider.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                minSliderMouseReleased(evt);
-            }
-        });
-
-        min.setText("20");
-
-        max.setText("50");
-
+        graphPanel.setBackground(new java.awt.Color(255, 255, 255));
         graphPanel.setLayout(new java.awt.BorderLayout());
+
+        numberOfAccidents.setText("Celkový počet nehod: 0");
+
+        numberOfAccidentsUDI.setText("Celkový počet pod vlivem: 0");
+
+        table.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "#", "Počet aktorů", "Počet nehod", "Počet nehod al."
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane2.setViewportView(table);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -122,117 +119,57 @@ public class Panel extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(10, 10, 10)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel4))
-                        .addGap(18, 18, 18)
+                        .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 226, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(pocet_lidi, javax.swing.GroupLayout.PREFERRED_SIZE, 161, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(77, 77, 77)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(pocet_lidi, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(18, 18, 18)
-                                .addComponent(labelPocetLidi))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(minSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                                .addComponent(jLabel3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(maxSlider, javax.swing.GroupLayout.PREFERRED_SIZE, 260, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(numberOfAccidents, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(numberOfAccidentsUDI, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(27, 27, 27))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addContainerGap())))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(206, 206, 206)
-                .addComponent(min)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(max)
-                .addGap(151, 151, 151))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(graphPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(27, 27, 27))
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(startButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                        .addComponent(graphPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 721, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(17, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 721, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(7, 7, 7)
-                                .addComponent(jLabel2)
-                                .addGap(40, 40, 40))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(labelPocetLidi)
-                                .addGap(29, 29, 29)))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(maxSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4)
-                            .addComponent(minSlider, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(min)
-                            .addComponent(max)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
-                        .addComponent(pocet_lidi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addComponent(graphPanel, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(layout.createSequentialGroup()
+                            .addComponent(numberOfAccidents)
+                            .addGap(6, 6, 6)
+                            .addComponent(numberOfAccidentsUDI))
+                        .addComponent(startButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(pocet_lidi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(2, 2, 2))
+                .addComponent(graphPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 162, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
-       if(maxSlider.getValue()>minSlider.getValue()){
-           Logic logic = new Logic(pocet_lidi.getValue()/10.0, this);
-       }else{
-           Error err= new Error("Max je menší než min");
-           err.setVisible(true);
-       }
+       Logic logic = new Logic(pocet_lidi.getValue()/10.0, this);
+       this.tcount += 1;
     }//GEN-LAST:event_startButtonActionPerformed
 
     private void pocet_lidiMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pocet_lidiMouseDragged
         Double number = new Double(pocet_lidi.getValue()/10.0);
-        labelPocetLidi.setText(number.toString()+" X");
+        //labelPocetLidi.setText(number.toString()+" X");
     }//GEN-LAST:event_pocet_lidiMouseDragged
 
     private void pocet_lidiMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_pocet_lidiMouseReleased
        Double number = new Double(pocet_lidi.getValue()/10.0);
-        labelPocetLidi.setText(number.toString()+" X");
+       //labelPocetLidi.setText(number.toString()+" X");
     }//GEN-LAST:event_pocet_lidiMouseReleased
-
-    private void minSliderMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minSliderMouseDragged
-        Logic.min=minSlider.getValue();
-        min.setText(Integer.toString(minSlider.getValue()));
-    }//GEN-LAST:event_minSliderMouseDragged
-
-    private void minSliderMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_minSliderMouseReleased
-         Logic.min=minSlider.getValue();
-         min.setText(Integer.toString(minSlider.getValue()));
-    }//GEN-LAST:event_minSliderMouseReleased
-
-    private void maxSliderMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maxSliderMouseDragged
-         Logic.max=minSlider.getValue();
-         max.setText(Integer.toString(maxSlider.getValue()));
-    }//GEN-LAST:event_maxSliderMouseDragged
-
-    private void maxSliderMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_maxSliderMouseReleased
-         Logic.max=minSlider.getValue();
-         max.setText(Integer.toString(maxSlider.getValue()));
-    }//GEN-LAST:event_maxSliderMouseReleased
 
     /**
      * @param args the command line arguments
@@ -374,32 +311,40 @@ public class Panel extends javax.swing.JFrame {
         actors=0;
         accidents=0;
         
-        
-        
- 
-
         JFreeChart chart = ChartFactory.createBarChart("Poměr počtu lidí a nehod za daný měsíc", "Měsíc", "Počet lidí", dataset, PlotOrientation.VERTICAL, true, true, true);
-         CategoryPlot p = chart.getCategoryPlot();
-         p.setRangeGridlinePaint(Color.black);
+        CategoryPlot p = chart.getCategoryPlot();
+        p.setRangeGridlinePaint(Color.black);
         ChartPanel chartPanel = new ChartPanel(chart);
         graphPanel.removeAll();
         graphPanel.add(chartPanel, BorderLayout.CENTER);
         graphPanel.validate();
        
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        
+        int n = 0, uid = 0, a = 0;
+        for(Day d: days){
+            n += d.accidents;
+            uid += d.uid;
+            a += d.actors;
+        }
+        
+        numberOfAccidents.setText("Celkový počet nehod: " + n);
+        numberOfAccidentsUDI.setText("Celkový počet pod vlivem: " + uid);
+        
+        Object[] row = { this.tcount, a, n, uid };
+        model.addRow(row);
+       
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel graphPanel;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel labelPocetLidi;
-    private javax.swing.JLabel max;
-    private javax.swing.JSlider maxSlider;
-    private javax.swing.JLabel min;
-    private javax.swing.JSlider minSlider;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JLabel numberOfAccidents;
+    private javax.swing.JLabel numberOfAccidentsUDI;
     private javax.swing.JSlider pocet_lidi;
     private javax.swing.JButton startButton;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }

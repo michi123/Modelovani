@@ -7,6 +7,8 @@ public class Day {
     
     public int actors = 0;
     
+    public int uid = 0;
+    
     
     @Override
     public String toString() {

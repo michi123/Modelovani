@@ -15,16 +15,18 @@ public class Osoba {
     
    int poziceX;
    int poziceY;
-   int promile;
+   double promile;
    int bezohlednost;
    int spechat;
    String rocniObdobi;
    String typ;
+   
+   boolean accident = false;
 
     public Osoba() {
         this.poziceX = randomInteger(1, 10);
         this.poziceY = randomInteger(1, 10);
-        this.promile = randomInteger(0, 10);
+        this.promile = randomInteger(0, 10) < randomInteger(0, 1)? randomInteger(0, randomInteger(0, 50))/10d:0.0;
         this.bezohlednost = randomInteger(1, 10);
         this.spechat = randomInteger(1, 10);
         this.typ = getType();
@@ -46,11 +48,11 @@ public class Osoba {
         this.poziceY = poziceY;
     }
 
-    public int getPromile() {
+    public double getPromile() {
         return promile;
     }
 
-    public void setPromile(int promile) {
+    public void setPromile(double promile) {
         this.promile = promile;
     }
 
@@ -108,8 +110,13 @@ public class Osoba {
     public String toString() {
         return "Osoba{" + "poziceX=" + poziceX + ", poziceY=" + poziceY + ", promile=" + promile + ", bezohlednost=" + bezohlednost + ", spechat=" + spechat +  ", typ=" + typ + '}';
     }
-   
-   
-   
+
+    public void setAccident(boolean accident) {
+        this.accident = accident;
+    }
+    
+    public boolean hasAccident() {
+        return accident;
+    }
     
 }

@@ -25,8 +25,21 @@ public class Year {
     }
     
     public int getSeason(int numberOfDay){
-        return numberOfDay / 4;
+        if(numberOfDay >= 0 && numberOfDay < 64){
+            return 1;
+        }
+        
+        if(numberOfDay >= 64 && numberOfDay < 130){
+            return 2;
+        }
+        
+        if(numberOfDay >= 130 && numberOfDay <= 190){
+            return 3;
+        }
+       
+        return 4;
     }
+    
     
     // pocet aktorů dle dne
     public int getNumberOfActorFromNumberOfDay(int dayNumber, int min, int max){
